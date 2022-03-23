@@ -14,13 +14,12 @@ namespace MDKAReservasi.Models
         public int Reservasi_PK { get; set; }
         public int Ruangan_FK { get; set; }
         public string SubjectReservasi { get; set; }
-        [Column(TypeName = "datetime2")]
-        public DateTime? TanggalReservasi { get; set; }
+        public Nullable<DateTime> TanggalReservasi { get; set; }
         public TimeSpan? JamMulai { get; set; }
         public TimeSpan? JamSelesai { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

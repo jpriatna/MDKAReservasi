@@ -47,31 +47,16 @@
                             @{ int i = 0;}
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@i</td>
-                                    @*<td>
-                                        <div class="btn-group" role="group">
-                                            <div class="btn-group justify-content-center">
-                                                <a href="#" class="btn alpha-slate bg-slate-300 dropdown-toggle" data-toggle="dropdown"><i class="icon-gear"></i></a>
-                                                <div class="dropdown-menu">
-                                                    <a class="editcontract btn btn-sm btn-primary dropdown-item text-capitalize" href="#" dataid="@item.Reservasi_PK" title="Edit"><span class="icon-pencil mr-2"></span> Edit Row</a>
-                                                    <a class="detailcontract btn btn-sm btn-primary dropdown-item text-capitalize" href="#" dataid="@item.Reservasi_PK" title="Details"><span class="icon-folder-open mr-2"></span> Open to the detail</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="deletecontract btn btn-sm btn-danger dropdown-item text-capitalize  text-danger" href="#" dataid="@item.Reservasi_PK" title="Delete"><span class="icon-trash mr-2"></span> Delete Row</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>*@
+                               <tr>
                                     <td class="text-center">
-                                        <select class="form-control select-search div-asset" name="[@i].Ruangan_FK" asp-items="@ViewBag.Ruangan">
+                                        <select class="form-control select-search div-asset" asp-for="[@i].Ruangan_FK" asp-items="@ViewBag.Ruangan">
                                             <option value="">--- chose option ---</option>
-                                            <option value="Owner">Owner</option>
-                                            <option value="Participant">Participant Interest</option>
                                         </select>
                                     </td>
-                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
-                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
-                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
+                                    <td class=""><input type="text" asp-for="[@i].SubjectReservasi" value="@item.SubjectReservasi" class="form-control" /></td>
+                                    <td class=""><input type="date" asp-for="[@i].TanggalReservasi" value="@item.TanggalReservasi" class="form-control" /></td>
+                                    <td class=""><input type="time" asp-for="[@i].JamMulai" value="@item.JamMulai" class="form-control" /></td>
+                                    <td class=""><input type="time" asp-for="[@i].JamSelesai" value="@item.JamSelesai" class="form-control" /></td>
                                 </tr>
                                 i++;
                             }

@@ -36,6 +36,7 @@ namespace MDKAReservasi.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(List<TblT_Reservasi> Model)
         {
+
             _context.AddRangeAsync(Model);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MDKAReservasi.Models.TblT_Reservasi>
+
+@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Reservasi</h1>
+</div>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+<div class="card-body px-0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group float-right mr-3">
+                   <button type="submit" id="add" class="btn bg-success">Save <i class="icon-paperplane"></i></button>
+                    @*<button type="button" id="loader_element" class="btn  btn-sm bg-success"><i class="icon-file-excel mr-1"></i> Import</button>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <table class="table ">
+                        <thead class="bg-primary text-center">
+                            <tr>
+                                <th class="text-center">Ruangan</th>
+                                <th class="text-center">Subject</th>
+                                <th class="text-center">Tanggal</th>
+                                <th class="text-center">Jam Mulai</th>
+                                <th class="text-center">Jam Selesai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                    <td class="text-center">
+                                        <select class="form-control select-search div-asset" name="[0].Ruangan_FK" asp-items="@ViewBag.Ruangan">
+                                            <option value="">--- chose option ---</option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center"><input name="[0].SubjectReservasi" class="form-control" /></td>
+                                    <td class=""><input type="date" name="[0].TanggalReservasi" class="form-control" /></td>
+                                    <td class=""><input type="time" name="[0].JamMulai" class="form-control" /></td>
+                                    <td class=""><input type="time" name="[0].JamSelesai" class="form-control" /></td>
+                                </tr>
+                            @{ int i = 0;}
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    @*<td>
+                                        <div class="btn-group" role="group">
+                                            <div class="btn-group justify-content-center">
+                                                <a href="#" class="btn alpha-slate bg-slate-300 dropdown-toggle" data-toggle="dropdown"><i class="icon-gear"></i></a>
+                                                <div class="dropdown-menu">
+                                                    <a class="editcontract btn btn-sm btn-primary dropdown-item text-capitalize" href="#" dataid="@item.Reservasi_PK" title="Edit"><span class="icon-pencil mr-2"></span> Edit Row</a>
+                                                    <a class="detailcontract btn btn-sm btn-primary dropdown-item text-capitalize" href="#" dataid="@item.Reservasi_PK" title="Details"><span class="icon-folder-open mr-2"></span> Open to the detail</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="deletecontract btn btn-sm btn-danger dropdown-item text-capitalize  text-danger" href="#" dataid="@item.Reservasi_PK" title="Delete"><span class="icon-trash mr-2"></span> Delete Row</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>*@
+                                    <td class="text-center">
+                                        <select class="form-control select-search div-asset" name="[@i].Ruangan_FK" asp-items="@ViewBag.Ruangan">
+                                            <option value="">--- chose option ---</option>
+                                            <option value="Owner">Owner</option>
+                                            <option value="Participant">Participant Interest</option>
+                                        </select>
+                                    </td>
+                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
+                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
+                                    <td class=""><input name="[@i].SubjectReservasi" hidden value="1" class="form-control" />1</td>
+                                </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+</form>

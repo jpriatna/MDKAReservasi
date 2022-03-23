@@ -37,7 +37,7 @@ namespace MDKAReservasi.Controllers
         public async Task<IActionResult> Create(List<TblT_Reservasi> Model)
         {
             
-            _context.AddRangeAsync(Model);
+            _context.UpdateRange(Model);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

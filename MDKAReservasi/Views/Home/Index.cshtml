@@ -44,19 +44,24 @@
                                     <td class=""><input type="time" name="[0].JamMulai" class="form-control" /></td>
                                     <td class=""><input type="time" name="[0].JamSelesai" class="form-control" /></td>
                                 </tr>
-                            @{ int i = 0;}
+                            @{ int i = 1;}
                             @foreach (var item in Model)
                             {
                                <tr>
+                                   <td hidden> 
+                                       <input type="text" name="[@i].Reservasi_PK" value="@item.Reservasi_PK" class="form-control" hidden /> 
+                                       <input type="text" name="[@i].CreatedBy" value="@item.CreatedBy" class="form-control" hidden />
+                                       <input type="text" name="[@i].CreatedDate" value="@item.CreatedDate" class="form-control" hidden />
+                                    </td>
                                     <td class="text-center">
                                         <select class="form-control select-search div-asset" asp-for="[@i].Ruangan_FK" asp-items="@ViewBag.Ruangan">
                                             <option value="">--- chose option ---</option>
                                         </select>
                                     </td>
-                                    <td class=""><input type="text" asp-for="[@i].SubjectReservasi" value="@item.SubjectReservasi" class="form-control" /></td>
-                                    <td class=""><input type="date" asp-for="[@i].TanggalReservasi" value="@item.TanggalReservasi" class="form-control" /></td>
-                                    <td class=""><input type="time" asp-for="[@i].JamMulai" value="@item.JamMulai" class="form-control" /></td>
-                                    <td class=""><input type="time" asp-for="[@i].JamSelesai" value="@item.JamSelesai" class="form-control" /></td>
+                                    <td class=""><input type="text" name="[@i].SubjectReservasi" value="@item.SubjectReservasi" class="form-control" /></td>
+                                    <td class=""><input type="date" asp-for="[@i].TanggalReservasi" class="form-control" /></td>
+                                    <td class=""><input type="time" name="[@i].JamMulai" value="@item.JamMulai" class="form-control" /></td>
+                                    <td class=""><input type="time" name="[@i].JamSelesai" value="@item.JamSelesai" class="form-control" /></td>
                                 </tr>
                                 i++;
                             }
